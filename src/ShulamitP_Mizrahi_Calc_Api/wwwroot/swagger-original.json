@@ -1,0 +1,114 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Mizrahi Arithmetic API",
+    "description" : "EST API that performs basic arithmetic operations. Implemented by Shulamit Petranker for Matrix/BM assignment.",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/test-436/ShulamitP-Mizrahi-Calc-Api/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "http://localhost:5000",
+    "description" : "Local development server"
+  } ],
+  "paths" : {
+    "/api/arithmetic" : {
+      "post" : {
+        "tags" : [ "Arithmetic" ],
+        "summary" : "Perform an arithmetic operation on two numbers",
+        "description" : "Sends two numbers in the body and an operation in the header, returns the result.",
+        "operationId" : "Calculate",
+        "parameters" : [ {
+          "name" : "X-Operation",
+          "in" : "header",
+          "description" : "The arithmetic operation to perform",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "$ref" : "#/components/schemas/OperationType"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CalculationRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successful operation",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CalculationResponse"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request or calculation error"
+          },
+          "401" : {
+            "description" : "Unauthorized – missing or invalid JWT token"
+          }
+        },
+        "security" : [ {
+          "bearerAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "OperationType" : {
+        "type" : "string",
+        "enum" : [ "Add", "Subtract", "Multiply", "Divide" ]
+      },
+      "CalculationRequest" : {
+        "required" : [ "number1", "number2" ],
+        "type" : "object",
+        "properties" : {
+          "number1" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "number2" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        }
+      },
+      "CalculationResponse" : {
+        "type" : "object",
+        "properties" : {
+          "result" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        },
+        "example" : {
+          "result" : 0.8008281904610115
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer",
+        "bearerFormat" : "JWT"
+      }
+    }
+  },
+  "x-codegen-settings" : {
+    "packageName" : "ShulamitP_Mizrahi_Calc_Api",
+    "apiNamespace" : "ShulamitP_Mizrahi_Calc_Api.Controllers",
+    "modelNamespace" : "ShulamitP_Mizrahi_Calc_Api.DTOs",
+    "invokerNamespace" : "ShulamitP_Mizrahi_Calc_Api"
+  }
+}

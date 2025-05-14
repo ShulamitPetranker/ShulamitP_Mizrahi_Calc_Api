@@ -1,0 +1,24 @@
+﻿version: '3.8'
+
+services:
+  calc-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: calculator-api
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Jwt__Secret=my_super_secure_256bit_key_1234567890!
+    depends_on:
+      - calc-tests
+
+  calc-tests:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    container_name: calculator-tests
+    volumes:
+      - ../..:/src
+    working_dir: /src
+    command: ["dotnet", "test", "test/ShulamitP_Mizrahi_Calc_Api.Tests/ShulamitP_Mizrahi_Calc_Api.Tests.csproj", "--logger:trx;LogFileName=/src/TestResults/test_results.trx"]

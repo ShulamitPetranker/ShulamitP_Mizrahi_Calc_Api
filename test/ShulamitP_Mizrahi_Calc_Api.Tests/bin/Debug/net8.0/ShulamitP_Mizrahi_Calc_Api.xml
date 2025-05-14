@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShulamitP_Mizrahi_Calc_Api</name>
+    </assembly>
+    <members>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Attributes.ValidateModelStateAttribute">
+            <summary>
+            Model state validation attribute
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Attributes.ValidateModelStateAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Called before the action method is invoked
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Controllers.ArithmeticController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Controllers.ArithmeticController.Calculate(ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest,ShulamitP_Mizrahi_Calc_Api.Models.OperationType)">
+            <summary>
+            Perform an arithmetic operation on two numbers
+            </summary>
+            <remarks>Sends two numbers in the body and an operation in the header, returns the result.</remarks>
+            <param name="body"></param>
+            <param name="xOperation">The arithmetic operation to perform</param>
+            <response code="200">Successful operation</response>
+            <response code="400">Invalid request or calculation error</response>
+            <response code="401">Unauthorized – missing or invalid JWT token</response>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Controllers.AuthenticationController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Controllers.AuthenticationController.Login">
+            <summary>
+            Authenticate user and generate JWT token
+            </summary>
+            <remarks>Accepts credentials and returns a JWT token if valid.</remarks>
+            <param name="body"></param>
+            <response code="200">Authentication successful</response>
+            <response code="401">Authentication failed - invalid credentials</response>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Dtos.CalculateDto">
+            <summary>
+            Represents a data transfer object for performing an arithmetic operation.
+            </summary>
+            <param name="Request">The request containing the two numeric values.</param>
+            <param name="Operation">The type of arithmetic operation to perform (e.g., Add, Subtract, Multiply, Divide).</param>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Dtos.CalculateDto.#ctor(ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest,ShulamitP_Mizrahi_Calc_Api.Models.OperationType)">
+            <summary>
+            Represents a data transfer object for performing an arithmetic operation.
+            </summary>
+            <param name="Request">The request containing the two numeric values.</param>
+            <param name="Operation">The type of arithmetic operation to perform (e.g., Add, Subtract, Multiply, Divide).</param>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Dtos.CalculateDto.Request">
+            <summary>The request containing the two numeric values.</summary>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Dtos.CalculateDto.Operation">
+            <summary>The type of arithmetic operation to perform (e.g., Add, Subtract, Multiply, Divide).</summary>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Filters.BasePathFilter">
+            <summary>
+            BasePath Document Filter sets BasePath property of Swagger and removes it from the individual URL paths
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Filters.BasePathFilter.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="basePath">BasePath to remove from Operations</param>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Filters.BasePathFilter.BasePath">
+            <summary>
+            Gets the BasePath of the Swagger Doc
+            </summary>
+            <returns>The BasePath of the Swagger Doc</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Filters.BasePathFilter.Apply(Microsoft.OpenApi.Models.OpenApiDocument,Swashbuckle.AspNetCore.SwaggerGen.DocumentFilterContext)">
+            <summary>
+            Apply the filter
+            </summary>
+            <param name="swaggerDoc">OpenApiDocument</param>
+            <param name="context">FilterContext</param>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Filters.GeneratePathParamsValidationFilter">
+            <summary>
+            Path Parameter Validation Rules Filter
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Filters.GeneratePathParamsValidationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="operation">Operation</param>
+            <param name="context">OperationFilterContext</param>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Handlers.Arithmetic.ArithmeticHandler">
+            <summary>
+            Handles arithmetic operations based on the provided request.
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Handlers.Arithmetic.ArithmeticHandler.Calculate(ShulamitP_Mizrahi_Calc_Api.Dtos.CalculateDto)">
+            <summary>
+            Performs an arithmetic calculation based on the given request.
+            </summary>
+            <param name="request">The calculation request, including the operation and operands.</param>
+            <returns>A task representing the asynchronous operation, containing the calculation result.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when the request body is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when one or both operands are missing, or division by zero is attempted.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when an unsupported operation is provided.</exception>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.Number1">
+            <summary>
+            Gets or Sets Number1
+            </summary>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.Number2">
+            <summary>
+            Gets or Sets Number2
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.Equals(ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest)">
+            <summary>
+            Returns true if CalculationRequest instances are equal
+            </summary>
+            <param name="other">Instance of CalculationRequest to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationRequest.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse.Result">
+            <summary>
+            Gets or Sets Result
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse.Equals(ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse)">
+            <summary>
+            Returns true if CalculationResponse instances are equal
+            </summary>
+            <param name="other">Instance of CalculationResponse to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.CalculationResponse.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse.Token">
+            <summary>
+            The JWT access token
+            </summary>
+            <value>The JWT access token</value>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse.ToString">
+            <summary>
+            Returns the string presentation of the object
+            </summary>
+            <returns>String presentation of the object</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse.ToJson">
+            <summary>
+            Returns the JSON string presentation of the object
+            </summary>
+            <returns>JSON string presentation of the object</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse.Equals(System.Object)">
+            <summary>
+            Returns true if objects are equal
+            </summary>
+            <param name="obj">Object to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse.Equals(ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse)">
+            <summary>
+            Returns true if LoginResponse instances are equal
+            </summary>
+            <param name="other">Instance of LoginResponse to be compared</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Models.LoginResponse.GetHashCode">
+            <summary>
+            Gets the hash code
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Models.OperationType">
+            <summary>
+            Gets or Sets OperationType
+            </summary>
+        </member>
+        <member name="F:ShulamitP_Mizrahi_Calc_Api.Models.OperationType.Add">
+            <summary>
+            Enum AddEnum for Add
+            </summary>
+        </member>
+        <member name="F:ShulamitP_Mizrahi_Calc_Api.Models.OperationType.Subtract">
+            <summary>
+            Enum SubtractEnum for Subtract
+            </summary>
+        </member>
+        <member name="F:ShulamitP_Mizrahi_Calc_Api.Models.OperationType.Multiply">
+            <summary>
+            Enum MultiplyEnum for Multiply
+            </summary>
+        </member>
+        <member name="F:ShulamitP_Mizrahi_Calc_Api.Models.OperationType.Divide">
+            <summary>
+            Enum DivideEnum for Divide
+            </summary>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            Create the web host builder.
+            </summary>
+            <param name="args"></param>
+            <returns>IWebHostBuilder</returns>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Security.BearerAuthenticationHandler">
+            <summary>
+            Handles bearer token authentication and JWT validation.
+            </summary>
+        </member>
+        <member name="F:ShulamitP_Mizrahi_Calc_Api.Security.BearerAuthenticationHandler.SchemeName">
+            <summary>
+            Scheme name for authentication handler.
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Security.BearerAuthenticationHandler.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions},Microsoft.Extensions.Logging.ILoggerFactory,System.Text.Encodings.Web.UrlEncoder,Microsoft.AspNetCore.Authentication.ISystemClock,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor for the authentication handler.
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Security.BearerAuthenticationHandler.HandleAuthenticateAsync">
+            <summary>
+            Validates the JWT token from the Authorization header.
+            </summary>
+        </member>
+        <member name="T:ShulamitP_Mizrahi_Calc_Api.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Startup.#ctor(Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="env"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:ShulamitP_Mizrahi_Calc_Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory"></param>
+        </member>
+    </members>
+</doc>
