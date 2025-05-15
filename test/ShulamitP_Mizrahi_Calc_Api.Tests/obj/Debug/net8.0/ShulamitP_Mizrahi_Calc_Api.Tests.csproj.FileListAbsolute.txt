@@ -245,3 +245,4 @@ C:/Users/ShulamitPetranker/Projects/מטלה05.25/test/ShulamitP_Mizrahi_Calc_Ap
 /src/test/ShulamitP_Mizrahi_Calc_Api.Tests/obj/Debug/net8.0/ShulamitP_Mizrahi_Calc_Api.Tests.pdb
 /src/test/ShulamitP_Mizrahi_Calc_Api.Tests/obj/Debug/net8.0/ShulamitP_Mizrahi_Calc_Api.Tests.genruntimeconfig.cache
 /src/test/ShulamitP_Mizrahi_Calc_Api.Tests/obj/Debug/net8.0/ref/ShulamitP_Mizrahi_Calc_Api.Tests.dll
+/src/test/ShulamitP_Mizrahi_Calc_Api.Tests/obj/Debug/net8.0/ShulamitP_Mizrahi_Calc_Api.Tests.sourcelink.json

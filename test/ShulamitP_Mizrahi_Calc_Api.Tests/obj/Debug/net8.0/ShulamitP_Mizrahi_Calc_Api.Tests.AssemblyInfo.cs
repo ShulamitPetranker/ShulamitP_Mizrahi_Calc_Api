@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShulamitP_Mizrahi_Calc_Api.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28de5036d8af80bf48c5eca7f04be6cf8936516b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShulamitP_Mizrahi_Calc_Api.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShulamitP_Mizrahi_Calc_Api.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

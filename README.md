@@ -91,7 +91,7 @@ docker-compose up --build
 ###  Option 2: Run the tests (and exit afterward)
 
 ```bash
-docker-compose -f docker-compose.test.yml up --build
+docker-compose up --build --abort-on-container-exit
 ```
 
 
