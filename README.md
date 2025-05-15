@@ -76,7 +76,7 @@ docker-compose down
 
 ## Running Tests and the API with Docker Compose
 
-You can run everything — both tests and the API — in a single command using Docker Compose.
+You can run everything â€” both tests and the API â€” in a single command using Docker Compose.
 
 ---
 
@@ -91,7 +91,7 @@ docker-compose up --build
 ###  Option 2: Run the tests (and exit afterward)
 
 ```bash
-docker-compose -f docker-compose.test.yml up --build
+docker-compose up --build --abort-on-container-exit
 ```
 
 
@@ -165,8 +165,8 @@ Based on OpenAPI 3.0, generated using SwaggerHub.
 
 ### Endpoints
 
-- `POST /api/arithmetic` — perform arithmetic operation
-- `GET /api/auth/login` — obtain JWT token
+- `POST /api/arithmetic` â€” perform arithmetic operation
+- `GET /api/auth/login` â€” obtain JWT token
 
 ### Schemas
 
